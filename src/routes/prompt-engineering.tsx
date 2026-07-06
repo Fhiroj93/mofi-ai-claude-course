@@ -319,7 +319,7 @@ function Page() {
         label="Prompting Patterns"
         level="Intermediate+"
         heading={<>Reusable moves <span className="text-claude">that just work.</span></>}
-        blurb="Named techniques you can pull off the shelf whenever the situation calls for them."
+        blurb="These are named, reusable moves — you don't invent them each time, you just reach for the right one for the situation in front of you."
         concepts={PATTERNS}
       />
 
