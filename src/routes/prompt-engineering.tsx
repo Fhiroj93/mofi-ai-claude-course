@@ -496,11 +496,11 @@ function ConceptCard({ concept, index }: { concept: Concept; index: number }) {
       <div className="mt-auto flex flex-col gap-2">
         <div className="rounded-lg border border-white/5 bg-white/[0.02] px-3 py-2">
           <div className="text-[9px] uppercase tracking-[0.24em] text-muted-foreground/70">Before</div>
-          <div className="mt-1 font-mono text-[12px] text-foreground/70">{concept.before}</div>
+          <div className="mt-1 whitespace-pre-wrap font-mono text-[12px] leading-relaxed text-foreground/70">{concept.before}</div>
         </div>
         <div className="rounded-lg border border-claude/25 bg-claude/[0.06] px-3 py-2">
           <div className="text-[9px] uppercase tracking-[0.24em] text-claude">After</div>
-          <div className="mt-1 font-mono text-[12px] text-foreground/90">{concept.after}</div>
+          <div className="mt-1 whitespace-pre-wrap font-mono text-[12px] leading-relaxed text-foreground/90">{concept.after}</div>
         </div>
       </div>
     </motion.div>
