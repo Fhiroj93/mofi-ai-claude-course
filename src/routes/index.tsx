@@ -1,24 +1,30 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { SideNav } from "@/components/presentation/SideNav";
+import { Hero } from "@/components/presentation/Hero";
+import { Thesis } from "@/components/presentation/Thesis";
+import { Ecosystem } from "@/components/presentation/Ecosystem";
+import { Battlegrounds } from "@/components/presentation/Battlegrounds";
+import { LiveTest } from "@/components/presentation/LiveTest";
+import { Scorecard } from "@/components/presentation/Scorecard";
+import { TrophyWall } from "@/components/presentation/TrophyWall";
+import { Verdict } from "@/components/presentation/Verdict";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <main className="relative min-h-screen w-full overflow-x-clip bg-background text-foreground">
+      <SideNav />
+      <Hero />
+      <Thesis />
+      <Ecosystem />
+      <Battlegrounds />
+      <LiveTest />
+      <Scorecard />
+      <TrophyWall />
+      <Verdict />
+    </main>
   );
 }
