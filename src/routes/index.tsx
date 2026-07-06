@@ -1,10 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
-import { ArrowUpRight, Sparkles, Swords, Layers } from "lucide-react";
+import { ArrowUpRight, Sparkles, Swords, Layers, Wand2 } from "lucide-react";
 import { Reveal, Kicker } from "@/components/presentation/primitives";
 
 type Topic = {
-  slug: "/claude-vs-chatgpt" | "/claude-features";
+  slug: "/claude-vs-chatgpt" | "/claude-features" | "/prompt-engineering";
   index: string;
   title: string;
   description: string;
@@ -31,6 +31,15 @@ const TOPICS: Topic[] = [
     icon: Layers,
     accent: "claude",
     tag: "Primer · 10 chapters",
+  },
+  {
+    slug: "/prompt-engineering",
+    index: "03",
+    title: "Prompt Engineering & Working With Claude",
+    description: "From foundations to loop engineering — plus a full slash-command reference library.",
+    icon: Wand2,
+    accent: "claude",
+    tag: "Playbook · 7 chapters",
   },
 ];
 

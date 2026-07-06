@@ -9,10 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PromptEngineeringRouteImport } from './routes/prompt-engineering'
 import { Route as ClaudeVsChatgptRouteImport } from './routes/claude-vs-chatgpt'
 import { Route as ClaudeFeaturesRouteImport } from './routes/claude-features'
 import { Route as IndexRouteImport } from './routes/index'
 
+const PromptEngineeringRoute = PromptEngineeringRouteImport.update({
+  id: '/prompt-engineering',
+  path: '/prompt-engineering',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ClaudeVsChatgptRoute = ClaudeVsChatgptRouteImport.update({
   id: '/claude-vs-chatgpt',
   path: '/claude-vs-chatgpt',
@@ -33,34 +39,54 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/claude-features': typeof ClaudeFeaturesRoute
   '/claude-vs-chatgpt': typeof ClaudeVsChatgptRoute
+  '/prompt-engineering': typeof PromptEngineeringRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/claude-features': typeof ClaudeFeaturesRoute
   '/claude-vs-chatgpt': typeof ClaudeVsChatgptRoute
+  '/prompt-engineering': typeof PromptEngineeringRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/claude-features': typeof ClaudeFeaturesRoute
   '/claude-vs-chatgpt': typeof ClaudeVsChatgptRoute
+  '/prompt-engineering': typeof PromptEngineeringRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/claude-features' | '/claude-vs-chatgpt'
+  fullPaths:
+    | '/'
+    | '/claude-features'
+    | '/claude-vs-chatgpt'
+    | '/prompt-engineering'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/claude-features' | '/claude-vs-chatgpt'
-  id: '__root__' | '/' | '/claude-features' | '/claude-vs-chatgpt'
+  to: '/' | '/claude-features' | '/claude-vs-chatgpt' | '/prompt-engineering'
+  id:
+    | '__root__'
+    | '/'
+    | '/claude-features'
+    | '/claude-vs-chatgpt'
+    | '/prompt-engineering'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ClaudeFeaturesRoute: typeof ClaudeFeaturesRoute
   ClaudeVsChatgptRoute: typeof ClaudeVsChatgptRoute
+  PromptEngineeringRoute: typeof PromptEngineeringRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/prompt-engineering': {
+      id: '/prompt-engineering'
+      path: '/prompt-engineering'
+      fullPath: '/prompt-engineering'
+      preLoaderRoute: typeof PromptEngineeringRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/claude-vs-chatgpt': {
       id: '/claude-vs-chatgpt'
       path: '/claude-vs-chatgpt'
@@ -89,6 +115,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ClaudeFeaturesRoute: ClaudeFeaturesRoute,
   ClaudeVsChatgptRoute: ClaudeVsChatgptRoute,
+  PromptEngineeringRoute: PromptEngineeringRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
