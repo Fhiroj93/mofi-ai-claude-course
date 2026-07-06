@@ -299,7 +299,7 @@ function Page() {
         label="The Foundation"
         level="Beginner"
         heading={<>Start here. <span className="text-claude">Say what you mean.</span></>}
-        blurb="Four habits that separate mediocre answers from useful ones."
+        blurb="The four habits that separate a usable answer from a guess. Get these right before anything else — everything more advanced builds on top of them."
         concepts={FOUNDATION}
       />
 
