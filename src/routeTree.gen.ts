@@ -9,8 +9,20 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ClaudeVsChatgptRouteImport } from './routes/claude-vs-chatgpt'
+import { Route as ClaudeFeaturesRouteImport } from './routes/claude-features'
 import { Route as IndexRouteImport } from './routes/index'
 
+const ClaudeVsChatgptRoute = ClaudeVsChatgptRouteImport.update({
+  id: '/claude-vs-chatgpt',
+  path: '/claude-vs-chatgpt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClaudeFeaturesRoute = ClaudeFeaturesRouteImport.update({
+  id: '/claude-features',
+  path: '/claude-features',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +31,50 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/claude-features': typeof ClaudeFeaturesRoute
+  '/claude-vs-chatgpt': typeof ClaudeVsChatgptRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/claude-features': typeof ClaudeFeaturesRoute
+  '/claude-vs-chatgpt': typeof ClaudeVsChatgptRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/claude-features': typeof ClaudeFeaturesRoute
+  '/claude-vs-chatgpt': typeof ClaudeVsChatgptRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/claude-features' | '/claude-vs-chatgpt'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/claude-features' | '/claude-vs-chatgpt'
+  id: '__root__' | '/' | '/claude-features' | '/claude-vs-chatgpt'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ClaudeFeaturesRoute: typeof ClaudeFeaturesRoute
+  ClaudeVsChatgptRoute: typeof ClaudeVsChatgptRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/claude-vs-chatgpt': {
+      id: '/claude-vs-chatgpt'
+      path: '/claude-vs-chatgpt'
+      fullPath: '/claude-vs-chatgpt'
+      preLoaderRoute: typeof ClaudeVsChatgptRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/claude-features': {
+      id: '/claude-features'
+      path: '/claude-features'
+      fullPath: '/claude-features'
+      preLoaderRoute: typeof ClaudeFeaturesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,17 +87,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ClaudeFeaturesRoute: ClaudeFeaturesRoute,
+  ClaudeVsChatgptRoute: ClaudeVsChatgptRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

@@ -420,7 +420,7 @@ function ExampleCard({
       className="card-surface card-surface-hover group relative flex items-start gap-4 p-5 hover:glow-claude"
     >
       <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-claude/12 text-claude ring-1 ring-inset ring-claude/20 transition-colors group-hover:bg-claude/20">
-        <Icon className="h-4.5 w-4.5" />
+        <Icon className="h-[18px] w-[18px]" />
       </div>
       <div className="flex-1">
         <div className="text-[10px] uppercase tracking-[0.24em] text-muted-foreground">
