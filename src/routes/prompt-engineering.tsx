@@ -15,8 +15,6 @@ import {
   Ruler,
   Footprints,
   Tags,
-  RefreshCw,
-  Split,
   ShieldCheck,
   Repeat2,
   Brain,
@@ -45,28 +43,33 @@ const FOUNDATION: Concept[] = [
     icon: Target,
     explainer: "Vague prompts get vague answers. Narrow the ask and the output sharpens.",
     before: "write about dogs",
-    after: "write a 200-word intro for a first-time golden retriever owner",
+    after:
+      "I'm writing a blog post for new pet owners. Write a 200-word intro section for someone bringing home their first golden retriever puppy. Cover: what temperament to expect in the first 6 months, how much daily exercise a puppy actually needs vs an adult dog, and one mistake almost every first-time owner makes with crate training. Keep the tone warm and reassuring, not clinical.",
   },
   {
     title: "Give Context",
     icon: MapPin,
     explainer: "The model can't read your mind. Situating yourself changes the whole answer.",
     before: "explain recursion",
-    after: "explain recursion — I'm a beginner coder who just learned loops",
+    after:
+      "I'm learning to code and just finished a section on for-loops and while-loops last week. Now I'm stuck on recursion and keep mentally substituting it with iteration. Explain recursion assuming I understand loops but have never seen a function call itself. Start with a real-world analogy (like Russian nesting dolls or a line of people passing a message backward), then show one simple code example, and explicitly point out where my \"loop brain\" is going to trip me up.",
   },
   {
     title: "State the Format",
     icon: LayoutList,
     explainer: "Tell it how you want the output shaped, not just what it should contain.",
     before: "compare React and Vue",
-    after: "compare React and Vue as a 6-row table: feature, React, Vue",
+    after:
+      "I'm deciding which frontend framework to learn first as a junior developer job-hunting in 2026. Compare React vs Vue as a table with exactly these rows: learning curve for beginners, current job market demand, ecosystem/library maturity, performance for small-to-medium apps, and community support quality. Keep each cell to one short sentence — I'll ask follow-up questions on anything I want expanded.",
   },
   {
     title: "One Task at a Time",
     icon: Focus,
     explainer: "Stacking five asks in one line usually loses two of them.",
-    before: "summarize + translate + rewrite + tweet + email it",
-    after: "start with a 3-bullet summary — we'll do the rest after",
+    before:
+      "summarize this article, translate it to Spanish, rewrite it in a casual tone, turn it into a tweet thread, and draft a follow-up email about it",
+    after:
+      "I have five things I eventually want done with this article, but let's not do them all at once. Start with just a 3-bullet summary of the core argument. Once I confirm that summary captures it correctly, I'll tell you which of the other four steps to do next — we'll go one at a time so nothing gets garbled in translation.",
   },
 ];
 
@@ -76,28 +79,32 @@ const INTERMEDIATE: Concept[] = [
     icon: UserSquare2,
     explainer: "Assigning a role instantly changes tone, depth, and vocabulary.",
     before: "give me feedback on this headline",
-    after: "act as a senior copywriter reviewing a landing page hero — critique this headline",
+    after:
+      "Act as a senior conversion copywriter who has run A/B tests on hundreds of SaaS landing pages and has a track record of doubling click-through rates. I'm going to paste a headline for our product's landing page hero section. Critique it specifically on: whether it states a concrete benefit vs a vague promise, whether it creates curiosity without being clickbait, and how it would likely perform against a control in an A/B test. Then give me 3 alternative headlines that fix the biggest issue you find.",
   },
   {
     title: "Few-Shot Examples",
     icon: Lightbulb,
     explainer: "Showing 2–3 example outputs teaches the pattern faster than describing it.",
     before: "write product taglines in our voice",
-    after: "here are 3 taglines in our voice — write 5 more that match the pattern",
+    after:
+      "Here are 3 taglines we already use and love: \"Built for speed, not spreadsheets.\" / \"Automation that doesn't feel robotic.\" / \"Less setup, more shipping.\" Study the rhythm — they're short, they contrast two things, and they never stack more than one adjective before a noun. Write 5 more taglines for our new analytics feature that match this exact pattern and tone, not just the general topic.",
   },
   {
     title: "Constraints & Guardrails",
     icon: Ruler,
     explainer: "Word limits, tone bans, and structure rules turn output into something usable.",
     before: "summarize this article",
-    after: "summarize in exactly 3 sentences, no jargon, no bullet points",
+    after:
+      "Summarize this article in exactly 3 sentences: the first sentence states the core problem, the second states the method or approach used, the third states the key finding or outcome. No jargon, no bullet points, no sentence longer than 20 words, and don't use hedging phrases like \"may suggest\" or \"could potentially indicate\" — commit to what the article actually claims.",
   },
   {
     title: "Step-by-Step Reasoning",
     icon: Footprints,
     explainer: "Asking it to think it through before answering measurably improves accuracy.",
     before: "what's the answer?",
-    after: "walk through the reasoning step by step, then give the final answer",
+    after:
+      "A train leaves Station A at 60mph. Thirty minutes later, a second train leaves the same station on the same track at 90mph. I want to know when and where the second train catches up to the first. Before giving me the final answer, walk through your reasoning step by step — define your variables first, set up the equations, then solve. I want to be able to follow your logic, not just see a number.",
   },
 ];
 
@@ -107,28 +114,32 @@ const PATTERNS: Concept[] = [
     icon: Brain,
     explainer: "Force the model to reason in sequence before committing to a final answer.",
     before: "what's 15% tip on $86.40?",
-    after: "show the math step by step, then give the final number",
+    after:
+      "My restaurant bill came to $86.40 and I want to leave an 18% tip because the service was genuinely great. Show me the math step by step so I can mentally follow along and double-check it myself, then give me the final total including the tip, rounded to the nearest dollar since I'm paying cash.",
   },
   {
     title: "Zero-Shot with Constraints",
     icon: Zap,
     explainer: "No examples, but tight rules — leans on precision instead of demonstration.",
     before: "summarize this",
-    after: "summarize in exactly 3 sentences, no bullets, no jargon",
+    after:
+      "Summarize this 12-page research paper in exactly 3 sentences: one sentence stating the research problem, one stating the methodology, one stating the key finding. No jargon, no bullet points, and no hedging language like \"may suggest\" — I need to know what they actually concluded, not a hedge-everything academic summary.",
   },
   {
     title: "Persona for the Reader",
     icon: UserCog,
     explainer: "End the prompt with who it's for — vocabulary and analogies shift automatically.",
     before: "explain crypto",
-    after: "explain crypto to a 12-year-old who plays a lot of video games",
+    after:
+      "Explain what a blockchain is to my nephew, who is 12 years old and spends most of his free time playing Minecraft and Roblox. Use a game-world analogy he'd actually recognize — like server rules everyone has to follow, or item trading logs that can't be faked. Don't mention investing, trading, or \"getting rich\" at all in this explanation — I just want him to understand the concept, not get excited about speculation.",
   },
   {
     title: "Devil's Advocate",
     icon: Swords,
     explainer: "Ask it to argue against your idea — surfaces weaknesses before your audience does.",
     before: "review my pitch",
-    after: "here's my pitch — argue the strongest case for why it fails",
+    after:
+      "Here's my pitch for a subscription coffee-bean delivery app targeting home baristas. Don't tell me what's good about it — I've heard that from friends already. Instead, argue the strongest possible case for why a VC would pass on this in a pitch meeting. Be as skeptical and specific as a real investor would be about market size, differentiation, and unit economics — don't pull punches to spare my feelings.",
   },
 ];
 
@@ -138,29 +149,18 @@ const ADVANCED: Concept[] = [
     icon: Tags,
     explainer:
       "Labelled sections like <context>, <task>, <output> keep parts of a complex prompt from bleeding together.",
-    before: "one wall of instructions",
-    after: "<context>…</context> <task>…</task> <output>…</output>",
+    before:
+      "We're a B2B SaaS onboarding tool for IT admins and I need an email that goes out after signup, keep it short with one button and don't make it sound salesy, plain text is fine",
+    after:
+      "<context>We're a B2B SaaS onboarding tool. Our audience is IT admins, not end users — they're busy, skeptical of marketing fluff, and evaluate tools on capability, not excitement.</context>\n<task>Write the \"Getting Started\" email sent immediately after signup.</task>\n<constraints>Under 120 words. Exactly one call-to-action button, no more. No exclamation points. No phrases like \"we're thrilled\" or \"excited to have you.\"</constraints>\n<output>Plain text, ready to paste directly into our email tool — no markdown formatting, no placeholder brackets.</output>",
   },
   {
-    title: "Iterative Refinement",
-    icon: RefreshCw,
-    explainer: "Treat the first output as a draft — give targeted feedback instead of restarting.",
-    before: "regenerate the whole thing",
-    after: "keep sections 1 and 3, rewrite section 2 to be more concrete",
-  },
-  {
-    title: "Decomposition",
-    icon: Split,
-    explainer: "Break one big ask into chained smaller steps — reliability jumps on complex tasks.",
-    before: "build me a full marketing plan",
-    after: "step 1: audience. step 2: positioning. step 3: channels. step 4: calendar.",
-  },
-  {
-    title: "Self-Critique Prompting",
+    title: "Negative Prompting",
     icon: ShieldCheck,
-    explainer: "Ask the model to review its own answer against explicit criteria before finalizing.",
-    before: "give me the final answer",
-    after: "draft an answer, then critique it against these 4 criteria, then rewrite",
+    explainer: "Naming what to avoid is often more powerful than describing what you want.",
+    before: "write a product description for our noise-canceling headphones",
+    after:
+      "Write a product description for our noise-canceling headphones. Do NOT use the words \"premium,\" \"revolutionary,\" \"game-changing,\" or \"seamless\" — they show up in every competitor's copy and I'm tired of them. Do NOT open with a rhetorical question. Do NOT mention battery life in the first paragraph — save that for the specs section. Focus the opening on the actual in-ear silence you get on a loud commute.",
   },
 ];
 
@@ -299,7 +299,7 @@ function Page() {
         label="The Foundation"
         level="Beginner"
         heading={<>Start here. <span className="text-claude">Say what you mean.</span></>}
-        blurb="Four habits that separate mediocre answers from useful ones."
+        blurb="The four habits that separate a usable answer from a guess. Get these right before anything else — everything more advanced builds on top of them."
         concepts={FOUNDATION}
       />
 
@@ -309,7 +309,7 @@ function Page() {
         label="Leveling Up"
         level="Intermediate"
         heading={<>Shape the response <span className="text-claude">before it starts.</span></>}
-        blurb="Framing, examples, and constraints turn Claude from generalist to specialist."
+        blurb="Once the basics are solid, the next lever is shaping the response before Claude even starts writing — through role, examples, and explicit boundaries."
         concepts={INTERMEDIATE}
       />
 
@@ -319,7 +319,7 @@ function Page() {
         label="Prompting Patterns"
         level="Intermediate+"
         heading={<>Reusable moves <span className="text-claude">that just work.</span></>}
-        blurb="Named techniques you can pull off the shelf whenever the situation calls for them."
+        blurb="These are named, reusable moves — you don't invent them each time, you just reach for the right one for the situation in front of you."
         concepts={PATTERNS}
       />
 
@@ -329,7 +329,7 @@ function Page() {
         label="Advanced Techniques"
         level="Advanced"
         heading={<>Compose prompts <span className="text-claude">like software.</span></>}
-        blurb="Structure, iteration, decomposition, and self-review — how power users actually work."
+        blurb="At this level you're not just writing prompts, you're structuring them — controlling exactly what goes in, what stays out, and how the output gets refined."
         concepts={ADVANCED}
       />
 
@@ -496,11 +496,11 @@ function ConceptCard({ concept, index }: { concept: Concept; index: number }) {
       <div className="mt-auto flex flex-col gap-2">
         <div className="rounded-lg border border-white/5 bg-white/[0.02] px-3 py-2">
           <div className="text-[9px] uppercase tracking-[0.24em] text-muted-foreground/70">Before</div>
-          <div className="mt-1 font-mono text-[12px] text-foreground/70">{concept.before}</div>
+          <div className="mt-1 whitespace-pre-wrap font-mono text-[12px] leading-relaxed text-foreground/70">{concept.before}</div>
         </div>
         <div className="rounded-lg border border-claude/25 bg-claude/[0.06] px-3 py-2">
           <div className="text-[9px] uppercase tracking-[0.24em] text-claude">After</div>
-          <div className="mt-1 font-mono text-[12px] text-foreground/90">{concept.after}</div>
+          <div className="mt-1 whitespace-pre-wrap font-mono text-[12px] leading-relaxed text-foreground/90">{concept.after}</div>
         </div>
       </div>
     </motion.div>
