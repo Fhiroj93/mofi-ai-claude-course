@@ -329,7 +329,7 @@ function Page() {
         label="Advanced Techniques"
         level="Advanced"
         heading={<>Compose prompts <span className="text-claude">like software.</span></>}
-        blurb="Structure, iteration, decomposition, and self-review — how power users actually work."
+        blurb="At this level you're not just writing prompts, you're structuring them — controlling exactly what goes in, what stays out, and how the output gets refined."
         concepts={ADVANCED}
       />
 
