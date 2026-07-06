@@ -15,7 +15,6 @@ import {
   Ruler,
   Footprints,
   Tags,
-  Tags,
   ShieldCheck,
   Repeat2,
   Brain,
