@@ -309,7 +309,7 @@ function Page() {
         label="Leveling Up"
         level="Intermediate"
         heading={<>Shape the response <span className="text-claude">before it starts.</span></>}
-        blurb="Framing, examples, and constraints turn Claude from generalist to specialist."
+        blurb="Once the basics are solid, the next lever is shaping the response before Claude even starts writing — through role, examples, and explicit boundaries."
         concepts={INTERMEDIATE}
       />
 
