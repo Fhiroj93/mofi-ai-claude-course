@@ -156,6 +156,11 @@
     0 0 0 1px oklch(0.68 0.13 165 / 0.4),
     0 20px 60px -20px oklch(0.68 0.13 165 / 0.45);
 }
+@utility glow-exec {
+  box-shadow:
+    0 0 0 1px oklch(0.68 0.14 265 / 0.4),
+    0 20px 60px -20px oklch(0.68 0.14 265 / 0.45);
+}
 
 @utility card-surface {
   background: linear-gradient(180deg, oklch(1 0 0 / 0.03), oklch(1 0 0 / 0.01));
