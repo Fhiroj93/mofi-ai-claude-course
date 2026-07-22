@@ -39,6 +39,8 @@
   --color-claude-soft: var(--claude-soft);
   --color-chatgpt: var(--chatgpt);
   --color-chatgpt-soft: var(--chatgpt-soft);
+  --color-exec: var(--exec);
+  --color-exec-soft: var(--exec-soft);
   --color-ink: var(--ink);
   --color-ink-2: var(--ink-2);
   --color-hairline: var(--hairline);
