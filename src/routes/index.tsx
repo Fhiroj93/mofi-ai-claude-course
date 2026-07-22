@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
-import { ArrowUpRight, Sparkles, Swords, Layers, Wand2 } from "lucide-react";
+import { ArrowUpRight, Sparkles, Swords, Layers, Wand2, FileCode2 } from "lucide-react";
 import { Reveal, Kicker } from "@/components/presentation/primitives";
 
 type Topic = {
