@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as PromptEngineeringRouteImport } from './routes/prompt-engineering'
 import { Route as ClaudeVsChatgptRouteImport } from './routes/claude-vs-chatgpt'
 import { Route as ClaudeFeaturesRouteImport } from './routes/claude-features'
+import { Route as ArtifactsVsExecutionRouteImport } from './routes/artifacts-vs-execution'
 import { Route as IndexRouteImport } from './routes/index'
 
 const PromptEngineeringRoute = PromptEngineeringRouteImport.update({
@@ -29,6 +30,11 @@ const ClaudeFeaturesRoute = ClaudeFeaturesRouteImport.update({
   path: '/claude-features',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ArtifactsVsExecutionRoute = ArtifactsVsExecutionRouteImport.update({
+  id: '/artifacts-vs-execution',
+  path: '/artifacts-vs-execution',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -37,12 +43,14 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/artifacts-vs-execution': typeof ArtifactsVsExecutionRoute
   '/claude-features': typeof ClaudeFeaturesRoute
   '/claude-vs-chatgpt': typeof ClaudeVsChatgptRoute
   '/prompt-engineering': typeof PromptEngineeringRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/artifacts-vs-execution': typeof ArtifactsVsExecutionRoute
   '/claude-features': typeof ClaudeFeaturesRoute
   '/claude-vs-chatgpt': typeof ClaudeVsChatgptRoute
   '/prompt-engineering': typeof PromptEngineeringRoute
@@ -50,6 +58,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/artifacts-vs-execution': typeof ArtifactsVsExecutionRoute
   '/claude-features': typeof ClaudeFeaturesRoute
   '/claude-vs-chatgpt': typeof ClaudeVsChatgptRoute
   '/prompt-engineering': typeof PromptEngineeringRoute
@@ -58,14 +67,21 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/artifacts-vs-execution'
     | '/claude-features'
     | '/claude-vs-chatgpt'
     | '/prompt-engineering'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/claude-features' | '/claude-vs-chatgpt' | '/prompt-engineering'
+  to:
+    | '/'
+    | '/artifacts-vs-execution'
+    | '/claude-features'
+    | '/claude-vs-chatgpt'
+    | '/prompt-engineering'
   id:
     | '__root__'
     | '/'
+    | '/artifacts-vs-execution'
     | '/claude-features'
     | '/claude-vs-chatgpt'
     | '/prompt-engineering'
@@ -73,6 +89,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ArtifactsVsExecutionRoute: typeof ArtifactsVsExecutionRoute
   ClaudeFeaturesRoute: typeof ClaudeFeaturesRoute
   ClaudeVsChatgptRoute: typeof ClaudeVsChatgptRoute
   PromptEngineeringRoute: typeof PromptEngineeringRoute
@@ -101,6 +118,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ClaudeFeaturesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/artifacts-vs-execution': {
+      id: '/artifacts-vs-execution'
+      path: '/artifacts-vs-execution'
+      fullPath: '/artifacts-vs-execution'
+      preLoaderRoute: typeof ArtifactsVsExecutionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -113,6 +137,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ArtifactsVsExecutionRoute: ArtifactsVsExecutionRoute,
   ClaudeFeaturesRoute: ClaudeFeaturesRoute,
   ClaudeVsChatgptRoute: ClaudeVsChatgptRoute,
   PromptEngineeringRoute: PromptEngineeringRoute,

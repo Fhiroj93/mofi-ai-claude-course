@@ -1,15 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
-import { ArrowUpRight, Sparkles, Swords, Layers, Wand2 } from "lucide-react";
+import { ArrowUpRight, Sparkles, Swords, Layers, Wand2, FileCode2 } from "lucide-react";
 import { Reveal, Kicker } from "@/components/presentation/primitives";
 
 type Topic = {
-  slug: "/claude-vs-chatgpt" | "/claude-features" | "/prompt-engineering";
+  slug: "/claude-vs-chatgpt" | "/claude-features" | "/prompt-engineering" | "/artifacts-vs-execution";
   index: string;
   title: string;
   description: string;
   icon: React.ComponentType<{ className?: string }>;
-  accent: "claude" | "chatgpt" | "dual";
+  accent: "claude" | "chatgpt" | "dual" | "exec-dual";
   tag: string;
 };
 
@@ -40,6 +40,15 @@ const TOPICS: Topic[] = [
     icon: Wand2,
     accent: "claude",
     tag: "Playbook · 7 chapters",
+  },
+  {
+    slug: "/artifacts-vs-execution",
+    index: "04",
+    title: "Artifacts vs. Code Execution",
+    description: "Claude's two creation engines — editable in-chat outputs vs. real, downloadable files.",
+    icon: FileCode2,
+    accent: "exec-dual",
+    tag: "Teardown · 10 sections",
   },
 ];
 
@@ -120,7 +129,23 @@ function TopicCard({ topic }: { topic: Topic }) {
   const glow =
     topic.accent === "chatgpt"
       ? "hover:glow-chatgpt"
+      : topic.accent === "exec-dual"
+      ? "hover:glow-exec"
       : "hover:glow-claude";
+  const wash =
+    topic.accent === "chatgpt"
+      ? "radial-gradient(circle, oklch(0.68 0.13 165 / 0.5), transparent 70%)"
+      : topic.accent === "dual"
+      ? "radial-gradient(circle, oklch(0.72 0.14 45 / 0.35), oklch(0.68 0.13 165 / 0.25) 60%, transparent 80%)"
+      : topic.accent === "exec-dual"
+      ? "radial-gradient(circle, oklch(0.72 0.14 45 / 0.35), oklch(0.68 0.14 265 / 0.3) 60%, transparent 80%)"
+      : "radial-gradient(circle, oklch(0.72 0.14 45 / 0.5), transparent 70%)";
+  const iconCls =
+    topic.accent === "chatgpt"
+      ? "bg-chatgpt/15 text-chatgpt"
+      : topic.accent === "exec-dual"
+      ? "bg-exec/15 text-exec"
+      : "bg-claude/15 text-claude";
   return (
     <Link to={topic.slug} className="group block">
       <motion.div
@@ -131,28 +156,16 @@ function TopicCard({ topic }: { topic: Topic }) {
         {/* Accent wash */}
         <div
           className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full opacity-40 blur-3xl transition-opacity group-hover:opacity-70"
-          style={{
-            background:
-              topic.accent === "chatgpt"
-                ? "radial-gradient(circle, oklch(0.68 0.13 165 / 0.5), transparent 70%)"
-                : topic.accent === "dual"
-                ? "radial-gradient(circle, oklch(0.72 0.14 45 / 0.35), oklch(0.68 0.13 165 / 0.25) 60%, transparent 80%)"
-                : "radial-gradient(circle, oklch(0.72 0.14 45 / 0.5), transparent 70%)",
-          }}
+          style={{ background: wash }}
         />
 
         <div className="relative flex items-start justify-between">
-          <div
-            className={`grid h-12 w-12 place-items-center rounded-xl ${
-              topic.accent === "chatgpt"
-                ? "bg-chatgpt/15 text-chatgpt"
-                : "bg-claude/15 text-claude"
-            }`}
-          >
+          <div className={`grid h-12 w-12 place-items-center rounded-xl ${iconCls}`}>
             <Icon className="h-5 w-5" />
           </div>
           <span className="text-kicker">{topic.index}</span>
         </div>
+
 
         <div className="relative mt-8">
           <div className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
