@@ -4,12 +4,12 @@ import { ArrowUpRight, Sparkles, Swords, Layers, Wand2, FileCode2 } from "lucide
 import { Reveal, Kicker } from "@/components/presentation/primitives";
 
 type Topic = {
-  slug: "/claude-vs-chatgpt" | "/claude-features" | "/prompt-engineering";
+  slug: "/claude-vs-chatgpt" | "/claude-features" | "/prompt-engineering" | "/artifacts-vs-execution";
   index: string;
   title: string;
   description: string;
   icon: React.ComponentType<{ className?: string }>;
-  accent: "claude" | "chatgpt" | "dual";
+  accent: "claude" | "chatgpt" | "dual" | "exec-dual";
   tag: string;
 };
 
@@ -40,6 +40,15 @@ const TOPICS: Topic[] = [
     icon: Wand2,
     accent: "claude",
     tag: "Playbook · 7 chapters",
+  },
+  {
+    slug: "/artifacts-vs-execution",
+    index: "04",
+    title: "Artifacts vs. Code Execution",
+    description: "Claude's two creation engines — editable in-chat outputs vs. real, downloadable files.",
+    icon: FileCode2,
+    accent: "exec-dual",
+    tag: "Teardown · 10 sections",
   },
 ];
 
