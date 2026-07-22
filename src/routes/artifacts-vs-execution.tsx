@@ -24,7 +24,6 @@ import {
   Check,
   X,
   Download,
-  Palette,
   MousePointerClick,
   type LucideIcon,
 } from "lucide-react";
@@ -868,4 +867,3 @@ function FormatBadge({ tone, label }: { tone: "claude" | "exec"; label: string }
 }
 
 // Ensure imports used only in showcase avoid warnings
-void Palette;
