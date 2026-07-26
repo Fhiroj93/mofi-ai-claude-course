@@ -1,10 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
-import { ArrowUpRight, Sparkles, Swords, Layers, Wand2, FileCode2 } from "lucide-react";
+import { ArrowUpRight, Sparkles, Swords, Layers, Wand2, FileCode2, Plug } from "lucide-react";
 import { Reveal, Kicker } from "@/components/presentation/primitives";
 
 type Topic = {
-  slug: "/claude-vs-chatgpt" | "/claude-features" | "/prompt-engineering" | "/artifacts-vs-execution";
+  slug:
+    | "/claude-vs-chatgpt"
+    | "/claude-features"
+    | "/prompt-engineering"
+    | "/artifacts-vs-execution"
+    | "/mcp-connectors-plugins";
   index: string;
   title: string;
   description: string;
@@ -49,6 +54,15 @@ const TOPICS: Topic[] = [
     icon: FileCode2,
     accent: "exec-dual",
     tag: "Teardown · 10 sections",
+  },
+  {
+    slug: "/mcp-connectors-plugins",
+    index: "05",
+    title: "Connectors, MCP & Plugins",
+    description: "Claude's ecosystem explained like a smartphone — the OS, the app, and the whole suite.",
+    icon: Plug,
+    accent: "claude",
+    tag: "Explainer · 10 sections",
   },
 ];
 

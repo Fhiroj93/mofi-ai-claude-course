@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as PromptEngineeringRouteImport } from './routes/prompt-engineering'
+import { Route as McpConnectorsPluginsRouteImport } from './routes/mcp-connectors-plugins'
 import { Route as ClaudeVsChatgptRouteImport } from './routes/claude-vs-chatgpt'
 import { Route as ClaudeFeaturesRouteImport } from './routes/claude-features'
 import { Route as ArtifactsVsExecutionRouteImport } from './routes/artifacts-vs-execution'
@@ -18,6 +19,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const PromptEngineeringRoute = PromptEngineeringRouteImport.update({
   id: '/prompt-engineering',
   path: '/prompt-engineering',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const McpConnectorsPluginsRoute = McpConnectorsPluginsRouteImport.update({
+  id: '/mcp-connectors-plugins',
+  path: '/mcp-connectors-plugins',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ClaudeVsChatgptRoute = ClaudeVsChatgptRouteImport.update({
@@ -46,6 +52,7 @@ export interface FileRoutesByFullPath {
   '/artifacts-vs-execution': typeof ArtifactsVsExecutionRoute
   '/claude-features': typeof ClaudeFeaturesRoute
   '/claude-vs-chatgpt': typeof ClaudeVsChatgptRoute
+  '/mcp-connectors-plugins': typeof McpConnectorsPluginsRoute
   '/prompt-engineering': typeof PromptEngineeringRoute
 }
 export interface FileRoutesByTo {
@@ -53,6 +60,7 @@ export interface FileRoutesByTo {
   '/artifacts-vs-execution': typeof ArtifactsVsExecutionRoute
   '/claude-features': typeof ClaudeFeaturesRoute
   '/claude-vs-chatgpt': typeof ClaudeVsChatgptRoute
+  '/mcp-connectors-plugins': typeof McpConnectorsPluginsRoute
   '/prompt-engineering': typeof PromptEngineeringRoute
 }
 export interface FileRoutesById {
@@ -61,6 +69,7 @@ export interface FileRoutesById {
   '/artifacts-vs-execution': typeof ArtifactsVsExecutionRoute
   '/claude-features': typeof ClaudeFeaturesRoute
   '/claude-vs-chatgpt': typeof ClaudeVsChatgptRoute
+  '/mcp-connectors-plugins': typeof McpConnectorsPluginsRoute
   '/prompt-engineering': typeof PromptEngineeringRoute
 }
 export interface FileRouteTypes {
@@ -70,6 +79,7 @@ export interface FileRouteTypes {
     | '/artifacts-vs-execution'
     | '/claude-features'
     | '/claude-vs-chatgpt'
+    | '/mcp-connectors-plugins'
     | '/prompt-engineering'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -77,6 +87,7 @@ export interface FileRouteTypes {
     | '/artifacts-vs-execution'
     | '/claude-features'
     | '/claude-vs-chatgpt'
+    | '/mcp-connectors-plugins'
     | '/prompt-engineering'
   id:
     | '__root__'
@@ -84,6 +95,7 @@ export interface FileRouteTypes {
     | '/artifacts-vs-execution'
     | '/claude-features'
     | '/claude-vs-chatgpt'
+    | '/mcp-connectors-plugins'
     | '/prompt-engineering'
   fileRoutesById: FileRoutesById
 }
@@ -92,6 +104,7 @@ export interface RootRouteChildren {
   ArtifactsVsExecutionRoute: typeof ArtifactsVsExecutionRoute
   ClaudeFeaturesRoute: typeof ClaudeFeaturesRoute
   ClaudeVsChatgptRoute: typeof ClaudeVsChatgptRoute
+  McpConnectorsPluginsRoute: typeof McpConnectorsPluginsRoute
   PromptEngineeringRoute: typeof PromptEngineeringRoute
 }
 
@@ -102,6 +115,13 @@ declare module '@tanstack/react-router' {
       path: '/prompt-engineering'
       fullPath: '/prompt-engineering'
       preLoaderRoute: typeof PromptEngineeringRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mcp-connectors-plugins': {
+      id: '/mcp-connectors-plugins'
+      path: '/mcp-connectors-plugins'
+      fullPath: '/mcp-connectors-plugins'
+      preLoaderRoute: typeof McpConnectorsPluginsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/claude-vs-chatgpt': {
@@ -140,6 +160,7 @@ const rootRouteChildren: RootRouteChildren = {
   ArtifactsVsExecutionRoute: ArtifactsVsExecutionRoute,
   ClaudeFeaturesRoute: ClaudeFeaturesRoute,
   ClaudeVsChatgptRoute: ClaudeVsChatgptRoute,
+  McpConnectorsPluginsRoute: McpConnectorsPluginsRoute,
   PromptEngineeringRoute: PromptEngineeringRoute,
 }
 export const routeTree = rootRouteImport
