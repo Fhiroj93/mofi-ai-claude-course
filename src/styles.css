@@ -80,7 +80,65 @@
   --ink: oklch(0.14 0.01 280);
   --ink-2: oklch(0.11 0.01 280);
   --hairline: oklch(1 0 0 / 10%);
+  --hairline-strong: oklch(1 0 0 / 18%);
+  --surface-1: oklch(1 0 0 / 0.03);
+  --surface-2: oklch(1 0 0 / 0.01);
+  --shadow-color: oklch(0 0 0 / 0.6);
+  --wash-1: oklch(0.72 0.14 45 / 0.18);
+  --wash-2: oklch(0.68 0.13 165 / 0.18);
+  --wash-3: oklch(0.3 0.06 280 / 0.5);
+  --wash-4: oklch(0.3 0.05 280 / 0.35);
 }
+
+/* ---------- Light theme: warm Claude paper ---------- */
+.light {
+  --background: oklch(0.985 0.006 75);
+  --foreground: oklch(0.24 0.02 60);
+  --card: oklch(0.995 0.004 75);
+  --card-foreground: oklch(0.24 0.02 60);
+  --popover: oklch(0.995 0.004 75);
+  --popover-foreground: oklch(0.24 0.02 60);
+  --primary: oklch(0.28 0.02 60);
+  --primary-foreground: oklch(0.99 0.004 75);
+  --secondary: oklch(0.95 0.012 70);
+  --secondary-foreground: oklch(0.28 0.02 60);
+  --muted: oklch(0.95 0.012 70);
+  --muted-foreground: oklch(0.48 0.02 60);
+  --accent: oklch(0.95 0.012 70);
+  --accent-foreground: oklch(0.28 0.02 60);
+  --border: oklch(0.24 0.02 60 / 12%);
+  --input: oklch(0.24 0.02 60 / 16%);
+  --ring: oklch(0.62 0.14 45);
+
+  --claude: oklch(0.58 0.15 42);
+  --claude-soft: oklch(0.58 0.15 42 / 12%);
+  --chatgpt: oklch(0.52 0.12 165);
+  --chatgpt-soft: oklch(0.52 0.12 165 / 12%);
+  --exec: oklch(0.52 0.15 265);
+  --exec-soft: oklch(0.52 0.15 265 / 12%);
+
+  --ink: oklch(0.985 0.006 75);
+  --ink-2: oklch(0.975 0.008 75);
+  --hairline: oklch(0.24 0.02 60 / 12%);
+  --hairline-strong: oklch(0.24 0.02 60 / 24%);
+  --surface-1: oklch(1 0 0 / 0.85);
+  --surface-2: oklch(1 0 0 / 0.55);
+  --shadow-color: oklch(0.4 0.05 60 / 0.18);
+  --wash-1: oklch(0.72 0.14 45 / 0.16);
+  --wash-2: oklch(0.68 0.13 165 / 0.10);
+  --wash-3: oklch(0.85 0.05 60 / 0.5);
+  --wash-4: oklch(0.85 0.05 60 / 0.45);
+}
+
+/* Light-mode remap for legacy white-alpha utilities used across the decks */
+.light [class*="border-white/"] { border-color: oklch(0.24 0.02 60 / 0.12); }
+.light [class*="hover:border-white/"]:hover { border-color: oklch(0.24 0.02 60 / 0.28); }
+.light [class*="bg-white/"] { background-color: oklch(0.24 0.02 60 / 0.04); }
+.light [class*="hover:bg-white/"]:hover { background-color: oklch(0.24 0.02 60 / 0.07); }
+.light [class*="via-white/"] { --tw-gradient-via: oklch(0.24 0.02 60 / 0.25); }
+.light [class*="text-white"] { color: var(--foreground); }
+.light [class*="bg-black"] { background-color: oklch(0.96 0.01 70); }
+.light .grain::after { opacity: 0.035; mix-blend-mode: multiply; }
 
 @layer base {
   * {
@@ -115,15 +173,15 @@
 
 @utility bg-radial-hero {
   background:
-    radial-gradient(1200px 600px at 20% 10%, oklch(0.72 0.14 45 / 0.18), transparent 60%),
-    radial-gradient(1000px 500px at 85% 30%, oklch(0.68 0.13 165 / 0.18), transparent 60%),
-    radial-gradient(800px 500px at 50% 100%, oklch(0.3 0.06 280 / 0.5), transparent 70%),
+    radial-gradient(1200px 600px at 20% 10%, var(--wash-1), transparent 60%),
+    radial-gradient(1000px 500px at 85% 30%, var(--wash-2), transparent 60%),
+    radial-gradient(800px 500px at 50% 100%, var(--wash-3), transparent 70%),
     var(--ink-2);
 }
 
 @utility bg-radial-section {
   background:
-    radial-gradient(900px 500px at 80% 0%, oklch(0.3 0.05 280 / 0.35), transparent 60%),
+    radial-gradient(900px 500px at 80% 0%, var(--wash-4), transparent 60%),
     var(--background);
 }
 
@@ -163,7 +221,7 @@
 }
 
 @utility card-surface {
-  background: linear-gradient(180deg, oklch(1 0 0 / 0.03), oklch(1 0 0 / 0.01));
+  background: linear-gradient(180deg, var(--surface-1), var(--surface-2));
   border: 1px solid var(--hairline);
   border-radius: var(--radius-2xl);
   backdrop-filter: blur(6px);
@@ -172,8 +230,8 @@
 @utility card-surface-hover {
   &:hover {
     transform: translateY(-3px);
-    border-color: oklch(1 0 0 / 0.18);
-    box-shadow: 0 30px 80px -30px oklch(0 0 0 / 0.6);
+    border-color: var(--hairline-strong);
+    box-shadow: 0 30px 80px -30px var(--shadow-color);
   }
 }
 
