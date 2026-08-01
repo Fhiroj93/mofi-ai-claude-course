@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
-import { ArrowUpRight, Sparkles, Swords, Layers, Wand2, FileCode2, Plug } from "lucide-react";
+import { ArrowUpRight, Sparkles, Swords, Layers, Wand2, FileCode2, Plug, FolderOpen } from "lucide-react";
 import { Reveal, Kicker } from "@/components/presentation/primitives";
 
 type Topic = {
@@ -9,7 +9,8 @@ type Topic = {
     | "/claude-features"
     | "/prompt-engineering"
     | "/artifacts-vs-execution"
-    | "/mcp-connectors-plugins";
+    | "/mcp-connectors-plugins"
+    | "/claude-skills";
   index: string;
   title: string;
   description: string;
@@ -17,6 +18,7 @@ type Topic = {
   accent: "claude" | "chatgpt" | "dual" | "exec-dual";
   tag: string;
 };
+
 
 const TOPICS: Topic[] = [
   {

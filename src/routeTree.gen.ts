@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as PromptEngineeringRouteImport } from './routes/prompt-engineering'
 import { Route as McpConnectorsPluginsRouteImport } from './routes/mcp-connectors-plugins'
 import { Route as ClaudeVsChatgptRouteImport } from './routes/claude-vs-chatgpt'
+import { Route as ClaudeSkillsRouteImport } from './routes/claude-skills'
 import { Route as ClaudeFeaturesRouteImport } from './routes/claude-features'
 import { Route as ArtifactsVsExecutionRouteImport } from './routes/artifacts-vs-execution'
 import { Route as IndexRouteImport } from './routes/index'
@@ -29,6 +30,11 @@ const McpConnectorsPluginsRoute = McpConnectorsPluginsRouteImport.update({
 const ClaudeVsChatgptRoute = ClaudeVsChatgptRouteImport.update({
   id: '/claude-vs-chatgpt',
   path: '/claude-vs-chatgpt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClaudeSkillsRoute = ClaudeSkillsRouteImport.update({
+  id: '/claude-skills',
+  path: '/claude-skills',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ClaudeFeaturesRoute = ClaudeFeaturesRouteImport.update({
@@ -51,6 +57,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/artifacts-vs-execution': typeof ArtifactsVsExecutionRoute
   '/claude-features': typeof ClaudeFeaturesRoute
+  '/claude-skills': typeof ClaudeSkillsRoute
   '/claude-vs-chatgpt': typeof ClaudeVsChatgptRoute
   '/mcp-connectors-plugins': typeof McpConnectorsPluginsRoute
   '/prompt-engineering': typeof PromptEngineeringRoute
@@ -59,6 +66,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/artifacts-vs-execution': typeof ArtifactsVsExecutionRoute
   '/claude-features': typeof ClaudeFeaturesRoute
+  '/claude-skills': typeof ClaudeSkillsRoute
   '/claude-vs-chatgpt': typeof ClaudeVsChatgptRoute
   '/mcp-connectors-plugins': typeof McpConnectorsPluginsRoute
   '/prompt-engineering': typeof PromptEngineeringRoute
@@ -68,6 +76,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/artifacts-vs-execution': typeof ArtifactsVsExecutionRoute
   '/claude-features': typeof ClaudeFeaturesRoute
+  '/claude-skills': typeof ClaudeSkillsRoute
   '/claude-vs-chatgpt': typeof ClaudeVsChatgptRoute
   '/mcp-connectors-plugins': typeof McpConnectorsPluginsRoute
   '/prompt-engineering': typeof PromptEngineeringRoute
@@ -78,6 +87,7 @@ export interface FileRouteTypes {
     | '/'
     | '/artifacts-vs-execution'
     | '/claude-features'
+    | '/claude-skills'
     | '/claude-vs-chatgpt'
     | '/mcp-connectors-plugins'
     | '/prompt-engineering'
@@ -86,6 +96,7 @@ export interface FileRouteTypes {
     | '/'
     | '/artifacts-vs-execution'
     | '/claude-features'
+    | '/claude-skills'
     | '/claude-vs-chatgpt'
     | '/mcp-connectors-plugins'
     | '/prompt-engineering'
@@ -94,6 +105,7 @@ export interface FileRouteTypes {
     | '/'
     | '/artifacts-vs-execution'
     | '/claude-features'
+    | '/claude-skills'
     | '/claude-vs-chatgpt'
     | '/mcp-connectors-plugins'
     | '/prompt-engineering'
@@ -103,6 +115,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ArtifactsVsExecutionRoute: typeof ArtifactsVsExecutionRoute
   ClaudeFeaturesRoute: typeof ClaudeFeaturesRoute
+  ClaudeSkillsRoute: typeof ClaudeSkillsRoute
   ClaudeVsChatgptRoute: typeof ClaudeVsChatgptRoute
   McpConnectorsPluginsRoute: typeof McpConnectorsPluginsRoute
   PromptEngineeringRoute: typeof PromptEngineeringRoute
@@ -129,6 +142,13 @@ declare module '@tanstack/react-router' {
       path: '/claude-vs-chatgpt'
       fullPath: '/claude-vs-chatgpt'
       preLoaderRoute: typeof ClaudeVsChatgptRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/claude-skills': {
+      id: '/claude-skills'
+      path: '/claude-skills'
+      fullPath: '/claude-skills'
+      preLoaderRoute: typeof ClaudeSkillsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/claude-features': {
@@ -159,6 +179,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ArtifactsVsExecutionRoute: ArtifactsVsExecutionRoute,
   ClaudeFeaturesRoute: ClaudeFeaturesRoute,
+  ClaudeSkillsRoute: ClaudeSkillsRoute,
   ClaudeVsChatgptRoute: ClaudeVsChatgptRoute,
   McpConnectorsPluginsRoute: McpConnectorsPluginsRoute,
   PromptEngineeringRoute: PromptEngineeringRoute,
