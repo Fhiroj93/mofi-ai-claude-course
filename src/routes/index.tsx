@@ -66,7 +66,17 @@ const TOPICS: Topic[] = [
     accent: "claude",
     tag: "Explainer · 10 sections",
   },
+  {
+    slug: "/claude-skills",
+    index: "06",
+    title: "Claude Skills — Teach Claude Your Way of Working",
+    description: "Package your expertise once: folders of instructions Claude loads automatically, every time.",
+    icon: FolderOpen,
+    accent: "claude",
+    tag: "Primer · 10 sections",
+  },
 ];
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
