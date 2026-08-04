@@ -483,11 +483,11 @@ function StepRow({
 }) {
   const t = TONE[mode];
   return (
-    <div className="grid grid-cols-12 gap-4">
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
       {steps.map((s, i) => {
         const Icon = s.icon;
         return (
-          <Reveal key={s.title} delay={i * 0.08} className="col-span-12 sm:col-span-6 lg:col-span-2">
+          <Reveal key={s.title} delay={i * 0.08}>
             <div className="card-surface relative h-full p-5">
               <div
                 className={`grid h-10 w-10 place-items-center rounded-xl ring-1 ring-inset ${t.bg} ${t.text} ${t.ring}`}
