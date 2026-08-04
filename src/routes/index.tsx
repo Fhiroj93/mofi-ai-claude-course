@@ -77,7 +77,17 @@ const TOPICS: Topic[] = [
     accent: "claude",
     tag: "Primer · 10 sections",
   },
+  {
+    slug: "/three-ways-to-work",
+    index: "07",
+    title: "Claude.ai vs Cowork vs Claude Code — Which One Do You Actually Need?",
+    description: "Same intelligence, three very different jobs — chat, delegate, or build.",
+    icon: Split,
+    accent: "dual",
+    tag: "Guide · 10 sections",
+  },
 ];
+
 
 
 export const Route = createFileRoute("/")({
