@@ -487,7 +487,7 @@ function StepRow({
       {steps.map((s, i) => {
         const Icon = s.icon;
         return (
-          <Reveal key={s.title} delay={i * 0.08} className="col-span-12 sm:col-span-6 lg:col-span-[2.4] lg:col-span-2">
+          <Reveal key={s.title} delay={i * 0.08} className="col-span-12 sm:col-span-6 lg:col-span-2">
             <div className="card-surface relative h-full p-5">
               <div
                 className={`grid h-10 w-10 place-items-center rounded-xl ring-1 ring-inset ${t.bg} ${t.text} ${t.ring}`}
