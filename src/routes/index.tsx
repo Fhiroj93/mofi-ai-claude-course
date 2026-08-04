@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
-import { ArrowUpRight, Sparkles, Swords, Layers, Wand2, FileCode2, Plug, FolderOpen } from "lucide-react";
+import { ArrowUpRight, Sparkles, Swords, Layers, Wand2, FileCode2, Plug, FolderOpen, Split } from "lucide-react";
 import { Reveal, Kicker } from "@/components/presentation/primitives";
 
 type Topic = {
@@ -10,7 +10,9 @@ type Topic = {
     | "/prompt-engineering"
     | "/artifacts-vs-execution"
     | "/mcp-connectors-plugins"
-    | "/claude-skills";
+    | "/claude-skills"
+    | "/three-ways-to-work";
+
   index: string;
   title: string;
   description: string;
