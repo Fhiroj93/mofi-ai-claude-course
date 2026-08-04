@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ThreeWaysToWorkRouteImport } from './routes/three-ways-to-work'
 import { Route as PromptEngineeringRouteImport } from './routes/prompt-engineering'
 import { Route as McpConnectorsPluginsRouteImport } from './routes/mcp-connectors-plugins'
 import { Route as ClaudeVsChatgptRouteImport } from './routes/claude-vs-chatgpt'
@@ -17,6 +18,11 @@ import { Route as ClaudeFeaturesRouteImport } from './routes/claude-features'
 import { Route as ArtifactsVsExecutionRouteImport } from './routes/artifacts-vs-execution'
 import { Route as IndexRouteImport } from './routes/index'
 
+const ThreeWaysToWorkRoute = ThreeWaysToWorkRouteImport.update({
+  id: '/three-ways-to-work',
+  path: '/three-ways-to-work',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PromptEngineeringRoute = PromptEngineeringRouteImport.update({
   id: '/prompt-engineering',
   path: '/prompt-engineering',
@@ -61,6 +67,7 @@ export interface FileRoutesByFullPath {
   '/claude-vs-chatgpt': typeof ClaudeVsChatgptRoute
   '/mcp-connectors-plugins': typeof McpConnectorsPluginsRoute
   '/prompt-engineering': typeof PromptEngineeringRoute
+  '/three-ways-to-work': typeof ThreeWaysToWorkRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -70,6 +77,7 @@ export interface FileRoutesByTo {
   '/claude-vs-chatgpt': typeof ClaudeVsChatgptRoute
   '/mcp-connectors-plugins': typeof McpConnectorsPluginsRoute
   '/prompt-engineering': typeof PromptEngineeringRoute
+  '/three-ways-to-work': typeof ThreeWaysToWorkRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -80,6 +88,7 @@ export interface FileRoutesById {
   '/claude-vs-chatgpt': typeof ClaudeVsChatgptRoute
   '/mcp-connectors-plugins': typeof McpConnectorsPluginsRoute
   '/prompt-engineering': typeof PromptEngineeringRoute
+  '/three-ways-to-work': typeof ThreeWaysToWorkRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -91,6 +100,7 @@ export interface FileRouteTypes {
     | '/claude-vs-chatgpt'
     | '/mcp-connectors-plugins'
     | '/prompt-engineering'
+    | '/three-ways-to-work'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -100,6 +110,7 @@ export interface FileRouteTypes {
     | '/claude-vs-chatgpt'
     | '/mcp-connectors-plugins'
     | '/prompt-engineering'
+    | '/three-ways-to-work'
   id:
     | '__root__'
     | '/'
@@ -109,6 +120,7 @@ export interface FileRouteTypes {
     | '/claude-vs-chatgpt'
     | '/mcp-connectors-plugins'
     | '/prompt-engineering'
+    | '/three-ways-to-work'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -119,10 +131,18 @@ export interface RootRouteChildren {
   ClaudeVsChatgptRoute: typeof ClaudeVsChatgptRoute
   McpConnectorsPluginsRoute: typeof McpConnectorsPluginsRoute
   PromptEngineeringRoute: typeof PromptEngineeringRoute
+  ThreeWaysToWorkRoute: typeof ThreeWaysToWorkRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/three-ways-to-work': {
+      id: '/three-ways-to-work'
+      path: '/three-ways-to-work'
+      fullPath: '/three-ways-to-work'
+      preLoaderRoute: typeof ThreeWaysToWorkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/prompt-engineering': {
       id: '/prompt-engineering'
       path: '/prompt-engineering'
@@ -183,6 +203,7 @@ const rootRouteChildren: RootRouteChildren = {
   ClaudeVsChatgptRoute: ClaudeVsChatgptRoute,
   McpConnectorsPluginsRoute: McpConnectorsPluginsRoute,
   PromptEngineeringRoute: PromptEngineeringRoute,
+  ThreeWaysToWorkRoute: ThreeWaysToWorkRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

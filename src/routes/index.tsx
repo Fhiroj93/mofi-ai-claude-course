@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
-import { ArrowUpRight, Sparkles, Swords, Layers, Wand2, FileCode2, Plug, FolderOpen } from "lucide-react";
+import { ArrowUpRight, Sparkles, Swords, Layers, Wand2, FileCode2, Plug, FolderOpen, Split } from "lucide-react";
 import { Reveal, Kicker } from "@/components/presentation/primitives";
 
 type Topic = {
@@ -10,7 +10,9 @@ type Topic = {
     | "/prompt-engineering"
     | "/artifacts-vs-execution"
     | "/mcp-connectors-plugins"
-    | "/claude-skills";
+    | "/claude-skills"
+    | "/three-ways-to-work";
+
   index: string;
   title: string;
   description: string;
@@ -75,7 +77,17 @@ const TOPICS: Topic[] = [
     accent: "claude",
     tag: "Primer · 10 sections",
   },
+  {
+    slug: "/three-ways-to-work",
+    index: "07",
+    title: "Claude.ai vs Cowork vs Claude Code — Which One Do You Actually Need?",
+    description: "Same intelligence, three very different jobs — chat, delegate, or build.",
+    icon: Split,
+    accent: "dual",
+    tag: "Guide · 10 sections",
+  },
 ];
+
 
 
 export const Route = createFileRoute("/")({
