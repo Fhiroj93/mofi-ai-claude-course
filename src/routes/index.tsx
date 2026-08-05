@@ -88,7 +88,17 @@ const TOPICS: Topic[] = [
     accent: "dual",
     tag: "Guide · 10 sections",
   },
+  {
+    slug: "/browser-use",
+    index: "08",
+    title: "Claude Cowork — Browser Use Flow",
+    description: "Goal → Browse → Extract → Structure, with real prompts for n8n edits, Gmail drafts and live research.",
+    icon: Chrome,
+    accent: "claude",
+    tag: "Teardown · 8 sections",
+  },
 ];
+
 
 
 
