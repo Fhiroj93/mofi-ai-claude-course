@@ -15,6 +15,7 @@ import { Route as McpConnectorsPluginsRouteImport } from './routes/mcp-connector
 import { Route as ClaudeVsChatgptRouteImport } from './routes/claude-vs-chatgpt'
 import { Route as ClaudeSkillsRouteImport } from './routes/claude-skills'
 import { Route as ClaudeFeaturesRouteImport } from './routes/claude-features'
+import { Route as BrowserUseRouteImport } from './routes/browser-use'
 import { Route as ArtifactsVsExecutionRouteImport } from './routes/artifacts-vs-execution'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -48,6 +49,11 @@ const ClaudeFeaturesRoute = ClaudeFeaturesRouteImport.update({
   path: '/claude-features',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BrowserUseRoute = BrowserUseRouteImport.update({
+  id: '/browser-use',
+  path: '/browser-use',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ArtifactsVsExecutionRoute = ArtifactsVsExecutionRouteImport.update({
   id: '/artifacts-vs-execution',
   path: '/artifacts-vs-execution',
@@ -62,6 +68,7 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/artifacts-vs-execution': typeof ArtifactsVsExecutionRoute
+  '/browser-use': typeof BrowserUseRoute
   '/claude-features': typeof ClaudeFeaturesRoute
   '/claude-skills': typeof ClaudeSkillsRoute
   '/claude-vs-chatgpt': typeof ClaudeVsChatgptRoute
@@ -72,6 +79,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/artifacts-vs-execution': typeof ArtifactsVsExecutionRoute
+  '/browser-use': typeof BrowserUseRoute
   '/claude-features': typeof ClaudeFeaturesRoute
   '/claude-skills': typeof ClaudeSkillsRoute
   '/claude-vs-chatgpt': typeof ClaudeVsChatgptRoute
@@ -83,6 +91,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/artifacts-vs-execution': typeof ArtifactsVsExecutionRoute
+  '/browser-use': typeof BrowserUseRoute
   '/claude-features': typeof ClaudeFeaturesRoute
   '/claude-skills': typeof ClaudeSkillsRoute
   '/claude-vs-chatgpt': typeof ClaudeVsChatgptRoute
@@ -95,6 +104,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/artifacts-vs-execution'
+    | '/browser-use'
     | '/claude-features'
     | '/claude-skills'
     | '/claude-vs-chatgpt'
@@ -105,6 +115,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/artifacts-vs-execution'
+    | '/browser-use'
     | '/claude-features'
     | '/claude-skills'
     | '/claude-vs-chatgpt'
@@ -115,6 +126,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/artifacts-vs-execution'
+    | '/browser-use'
     | '/claude-features'
     | '/claude-skills'
     | '/claude-vs-chatgpt'
@@ -126,6 +138,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ArtifactsVsExecutionRoute: typeof ArtifactsVsExecutionRoute
+  BrowserUseRoute: typeof BrowserUseRoute
   ClaudeFeaturesRoute: typeof ClaudeFeaturesRoute
   ClaudeSkillsRoute: typeof ClaudeSkillsRoute
   ClaudeVsChatgptRoute: typeof ClaudeVsChatgptRoute
@@ -178,6 +191,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ClaudeFeaturesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/browser-use': {
+      id: '/browser-use'
+      path: '/browser-use'
+      fullPath: '/browser-use'
+      preLoaderRoute: typeof BrowserUseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/artifacts-vs-execution': {
       id: '/artifacts-vs-execution'
       path: '/artifacts-vs-execution'
@@ -198,6 +218,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ArtifactsVsExecutionRoute: ArtifactsVsExecutionRoute,
+  BrowserUseRoute: BrowserUseRoute,
   ClaudeFeaturesRoute: ClaudeFeaturesRoute,
   ClaudeSkillsRoute: ClaudeSkillsRoute,
   ClaudeVsChatgptRoute: ClaudeVsChatgptRoute,

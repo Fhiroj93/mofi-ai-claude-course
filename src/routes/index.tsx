@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
-import { ArrowUpRight, Sparkles, Swords, Layers, Wand2, FileCode2, Plug, FolderOpen, Split } from "lucide-react";
+import { ArrowUpRight, Sparkles, Swords, Layers, Wand2, FileCode2, Plug, FolderOpen, Split, Chrome } from "lucide-react";
 import { Reveal, Kicker } from "@/components/presentation/primitives";
 
 type Topic = {
@@ -11,7 +11,9 @@ type Topic = {
     | "/artifacts-vs-execution"
     | "/mcp-connectors-plugins"
     | "/claude-skills"
-    | "/three-ways-to-work";
+    | "/three-ways-to-work"
+    | "/browser-use";
+
 
   index: string;
   title: string;
@@ -86,7 +88,17 @@ const TOPICS: Topic[] = [
     accent: "dual",
     tag: "Guide · 10 sections",
   },
+  {
+    slug: "/browser-use",
+    index: "08",
+    title: "Claude Cowork — Browser Use Flow",
+    description: "Goal → Browse → Extract → Structure, with real prompts for n8n edits, Gmail drafts and live research.",
+    icon: Chrome,
+    accent: "claude",
+    tag: "Teardown · 8 sections",
+  },
 ];
+
 
 
 
