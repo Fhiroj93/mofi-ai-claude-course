@@ -84,7 +84,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:description", content: "A curated index of premium, visual teardowns of the AI tools that matter." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
       { name: "twitter:title", content: "Claude AI Complete Mastery Course" },
       { name: "twitter:description", content: "A curated index of premium, visual teardowns of the AI tools that matter." },
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/4fe4b7e9-2332-474a-b583-e093653404c5/id-preview-53c87756--675d21d5-d7fb-467b-a779-63e2edd95161.lovable.app-1783348868693.png" },
