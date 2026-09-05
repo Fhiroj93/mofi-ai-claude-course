@@ -80,7 +80,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Claude AI Complete Mastery Course" },
       { name: "description", content: "A curated index of premium, visual teardowns of the AI tools that matter." },
-      { name: "author", content: "Lovable" },
       { property: "og:title", content: "Claude AI Complete Mastery Course" },
       { property: "og:description", content: "A curated index of premium, visual teardowns of the AI tools that matter." },
       { property: "og:type", content: "website" },
